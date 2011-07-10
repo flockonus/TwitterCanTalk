@@ -1,11 +1,3 @@
-/* bookmarklet ex: http://erkie.github.com/
-var s = document.createElement('script');
-s.type='text/javascript';
-document.body.appendChild(s);
-s.src='http://erkie.github.com/asteroids.min.js';
-void(0);
-*/
-
 
 function TwitterCanTalk(){
   var instance = this;
@@ -19,7 +11,7 @@ function TwitterCanTalk(){
   // call on start
   function init(){
     // Write credits to the body.
-    $('body').prepend('<div id="flockonus_mod" style="position: absolute;z-index: 1000;top: 50px;left: 10px;padding: 10px;background-color: #4AF;"> :D </div>')
+    $('body').prepend('<div id="flockonus_mod" style="position: absolute;z-index: 1000;top: 50px;left: 10px;padding: 10px;background-color: #4AF; border-radius: 5px;"> TwitterCanTalk by <a class="  twitter-atreply" data-screen-name="georgeju" target="_blank" href="http://twitter.com/flockonus" rel="nofollow"><span class="at">@</span><span class="at-text">flockonus</span></a> </div>')
     instance.fetchInterval  = setInterval('TCT.fetch()', 2000)
     instance.scrapeInterval = setInterval('TCT.scrape()',      5000)
     // it is important to mark a stop point
@@ -30,7 +22,7 @@ function TwitterCanTalk(){
   
   
   function insert_swf(){
-    // ?
+    // ? https://github.com/flockonus/TwitterCanTalk/raw/master/public/9000player.swf
   }
   
   // AS3 to call
@@ -86,13 +78,6 @@ function TwitterCanTalk(){
 
 TCT = new TwitterCanTalk()
 TCT.init()
-
-
-
-
-
-//ex and challange
-'http://translate.google.com/translate_tts?ie=UTF-8&q=HOJE%2009/07%20s%E1bado%20-%20TIM%20MAIA%20COVER%20Abertura%20com%20Bemol%20Blues%20Band%20Grava%E7%E3o%20do%20DVD%20-%20Mulher%20R%2410%20/%20Homem%20R%2415.%20-%20http%3A//migre.me/59qwc&tl=pt'
 
 
 
