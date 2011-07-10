@@ -69,12 +69,12 @@ function TwitterCanTalk(){
   
   function treat_and_queue(txt){
     
-    txt = ( escape( remove_links(txt).replace( /(\#|\@)/g, '' ) ) )
+    txt = ( remove_links(txt).replace( /(\#|\@)/g, '' ) )
     
     // google TTS limit
     txt = txt.substring(0,100)
     
-    instance.queue.push( "http://translate.google.com/translate_tts?ie=UTF-8&tl=pt&q=" + txt )
+    instance.queue.push( "http://translate.google.com/translate_tts?ie=UTF-8&tl=pt&q=" + escape(txt) )
     console.log('Added 1!')
   }
   
