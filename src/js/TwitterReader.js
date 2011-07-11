@@ -12,6 +12,7 @@ function TwitterCanTalk(){
   function init(){
     // Write credits to the body.
     $('body').prepend('<div id="flockonus_mod" style="position: absolute;z-index: 1000;top: 50px;left: 10px;padding: 10px;background-color: #4AF; border-radius: 5px;"> TwitterCanTalk by <a class="  twitter-atreply" data-screen-name="georgeju" target="_blank" href="http://twitter.com/flockonus" rel="nofollow"><span class="at">@</span><span class="at-text">flockonus</span></a> </div>')
+    // IE compatible mode =/
     instance.fetchInterval  = setInterval('TCT.fetch()', 2000)
     instance.scrapeInterval = setInterval('TCT.scrape()',      5000)
     // it is important to mark a stop point
@@ -22,7 +23,15 @@ function TwitterCanTalk(){
   
   
   function insert_swf(){
+    // ? https://raw.github.com/flockonus/TwitterCanTalk/master/src/js/TwitterReader.js
     // ? https://github.com/flockonus/TwitterCanTalk/raw/master/public/9000player.swf
+    
+    $('#flockonus_mod').append(
+      '<object width="30" height="30" id="9000player" align="middle">' +
+        '<param name="movie" value="https://raw.github.com/flockonus/TwitterCanTalk/master/public/9000player.swf" /> ' +
+        '<embed src="https://raw.github.com/flockonus/TwitterCanTalk/master/public/9000player.swf" quality="high" width="30" height="30" align="middle" allowfullscreen="false" flashvars="" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />' +
+      '</object>'
+    )
   }
   
   // AS3 to call

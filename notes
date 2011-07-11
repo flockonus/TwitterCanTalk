@@ -11,3 +11,5 @@ void(0);
 // example and challange
 'http://translate.google.com/translate_tts?ie=UTF-8&q=HOJE%2009/07%20s%E1bado%20-%20TIM%20MAIA%20COVER%20Abertura%20com%20Bemol%20Blues%20Band%20Grava%E7%E3o%20do%20DVD%20-%20Mulher%20R%2410%20/%20Homem%20R%2415.%20-%20http%3A//migre.me/59qwc&tl=pt'
 
+
+javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='https://raw.github.com/flockonus/TwitterCanTalk/master/src/js/TwitterReader.js';void(0);
