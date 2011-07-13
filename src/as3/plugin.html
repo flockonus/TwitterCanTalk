@@ -15,15 +15,22 @@
 			TCT = {
 				dequeue: function(){
 					return ( $queue.shift() );
+				},
+				transmit: function(){
+					var w = TCT.dequeue()
+					console.log(w)
+					document.getElementById('9000player').enqueueUrl( w )
+					console.log('sent.')
 				}
 			}
+			setInterval('TCT.transmit()', 2000)
 		</script>
 	</head>
 	<body>
 		<div id="flashContent">
 			<object width="30" height="30" id="9000player" align="middle">
 				<param name="movie" value="9000player.swf" />
-			  <param name="AllowScriptAccess" value="always" />
+				<param name="allowScriptAccess" value="always" />
 				<param name="quality" value="high" />
 				<param name="bgcolor" value="#ffffff" />
 				<param name="play" value="true" />
@@ -36,7 +43,7 @@
 				<!--[if !IE]>-->
 				<object type="application/x-shockwave-flash" data="9000player.swf" width="30" height="30">
 					<param name="movie" value="9000player.swf" />
-					<param name="AllowScriptAccess" value="always" />
+					<param name="allowScriptAccess" value="always" />
 					<param name="quality" value="high" />
 					<param name="bgcolor" value="#ffffff" />
 					<param name="play" value="true" />

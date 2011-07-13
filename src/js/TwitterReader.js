@@ -2,9 +2,10 @@
 function TwitterCanTalk(){
   var instance = this;
   
-  instance.queue = ["Agora seu twitter fala! Ó Sim! Conforme as atualizações aparecerem, eu lerei"]
+  instance.queue = []
   instance.fetchInterval = 0
   instance.scrapeInterval = 0
+  instance.transmitInterval  = 0
   
   
   
@@ -13,7 +14,8 @@ function TwitterCanTalk(){
     // Write credits to the body.
     $('body').prepend('<div id="flockonus_mod" style="position: absolute;z-index: 1000;top: 50px;left: 10px;padding: 10px;background-color: #4AF; border-radius: 5px;"> TwitterCanTalk by <a class="  twitter-atreply" data-screen-name="georgeju" target="_blank" href="http://twitter.com/flockonus" rel="nofollow"><span class="at">@</span><span class="at-text">flockonus</span></a> </div> <br />')
     // IE compatible mode =/
-    instance.fetchInterval  = setInterval('TCT.fetch()', 2000)
+    instance.fetchInterval  = setInterval('TCT.fetch()',       2000)
+    instance.transmitInterval  = setInterval('TCT.transmit()',  500)
     instance.scrapeInterval = setInterval('TCT.scrape()',      5000)
     // it is important to mark a stop point
     $('div.stream-item:first').attr('data-queued', 'true')
@@ -40,16 +42,16 @@ function TwitterCanTalk(){
       
       // data="'+flash_64+'"
       '<object width="32" height="32" id="9000player" align="middle" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" >' +
-        '<param name="movie" value="http://citrons.com.br/soro/player9000.swf" /> ' +
+        '<param name="movie" value="http://citrons.com.br/soro/9000player.swf" /> ' +
         '<param name="quality" value="high" />' +
         '<param name="allowScriptAccess" value="always" />' +
         '<param name="play" value="true" />' +
-        '<embed src="http://citrons.com.br/soro/player9000.swf" allowscriptaccess="true" quality="high" width="30" height="30" align="middle" allowfullscreen="false" flashvars="" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />' +
+        '<embed src="http://citrons.com.br/soro/9000player.swf" allowscriptaccess="true" quality="high" width="30" height="30" align="middle" allowfullscreen="false" flashvars="" type="application/x-shockwave-flash" pluginspage="http://www.adobe.com/go/getflashplayer" />' +
       '</object>'
     )
   }
   
-  // AS3 to call
+  // AS3 to call //not using anymore, see transmit()
   function dequeue(){
     return ( instance.queue.shift() );
   }
@@ -64,6 +66,18 @@ function TwitterCanTalk(){
       newsE.click()
   }
   instance.fetch = fetch
+  
+  
+  // transmit routine
+  function transmit(){
+    var flashFunc = $('#9000player')[0].enqueueUrl
+    
+    if( instance.queue && instance.queue.length && flashFunc ){
+      flashFunc( instance.queue.shift() )
+      console.log('d"fact transmiting..')
+    }
+  }
+  instance.transmit = transmit
   
   
   // scrap routine
@@ -101,7 +115,9 @@ function TwitterCanTalk(){
 }
 
 TCT = new TwitterCanTalk()
-TCT.init()
+$(document).ready(function(){
+  setTimeout('TCT.init()', 1000)
+})
 
 
 
