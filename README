@@ -1,4 +1,4 @@
-Google seems not to have it's API open to TTS, also block others domains requests.
+Google seems not to have it's TTS web API open, and also block others domains requests.
 Integrating a Flash TTS seems too heavy, and the quality is low.
 
 The ideal solution seems to be wait until Chrome actually support it in a broad way (rather than just say it does in docs)
